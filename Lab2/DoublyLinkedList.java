@@ -160,11 +160,11 @@ class DoublyLinkedList{
             System.out.println("LinkedList Values deleteFront");
             dl.display();
 
-            dl.addback(5);
-            dl.addback(35);
-            dl.addback(33);
-            dl.addback(21);
-            dl.addback(77);
+            dl.addBack(5);
+            dl.addBack(35);
+            dl.addBack(33);
+            dl.addBack(21);
+            dl.addBack(77);
             System.out.println();
             System.out.println("LinkedList Values addBack");
             dl.display();
@@ -187,7 +187,7 @@ class DoublyLinkedList{
             System.out.println();
             System.out.println("search Node " + dl.search(5));
 
-            dl.removenode(17);
+            dl.removeNode(17);
             System.out.println();
             System.out.println("LinkedList Values removenode  17");
             dl.display();
