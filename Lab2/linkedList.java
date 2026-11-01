@@ -203,6 +203,20 @@ class linkedList{
         return -1;
     }
 
+    public void ReverseList(){
+        Node next = null;
+        Node current = head;
+        Node prev = null;
+
+        while(current != null){
+            next = current.next;
+            current.next = prev;
+            prev = current ;
+            current = next;
+        }
+        head = tail;
+    }
+
     public void display(){
             Node current = head;
 
@@ -267,6 +281,10 @@ class linkedList{
             System.out.println("Total number of  linkedlist nodes : " + ll.getSize());
             System.out.println();
             System.out.println(ll.getindex(5));
+
+            ll.ReverseList();
+            System.out.println("Reversed LinkedList ");
+            ll.display();
 
             
 
