@@ -80,15 +80,37 @@ class DoublyLinkedList{
         while(current.next != null){
             if(current.next.data == target){
                 current.next = current.next.next;
-                return ;
+                return -1;
             }
             current = current.next;
         }
         if(target != current.data){
             System.out.println("Node does not found!");
         }
+        return 0;
     }
 
-    
+    public void addkeyAfter(int value, int target){
+        Node node = new Node(value);
+        Node current = head;
+        while(current != null){
+            if(current.data == target){
+                node.next = current.next;
+                node.prev = current;
+                current.next = node;
+                
+                if(current == tail){
+                    node = tail.next;
+                    node.prev = tail;
+                    tail = node;
+                    tail.next = null;
+                    return ;
+                }
+                return ;
+            }
+        }
+    }
+
+
     
 }
