@@ -111,6 +111,29 @@ class DoublyLinkedList{
         }
     }
 
+    public void addkeyBefore(int value, int target){
+        Node node = new Node(value);
+        Node current = head;
+        if(head.data == target){
+            node.next = head;
+            head.prev = node;
+            head = node;
+            return ;
+        }
+
+        while(current != null){
+            if(current.data == target){
+                node.prev = current.prev ;
+                current.prev.next = node;
+                node.next = current;
+                current.prev = node;    
+                return;
+            }
+            current = current.next;
+        }
+        
+    }
+
 
     
 }
