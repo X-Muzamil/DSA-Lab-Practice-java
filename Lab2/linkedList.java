@@ -282,6 +282,9 @@ class linkedList{
             System.out.println();
             System.out.println(ll.getindex(5));
 
+            System.out.println();
+            System.out.println("search Node " + ll.search(5));
+
             ll.ReverseList();
             System.out.println("Reversed LinkedList ");
             ll.display();

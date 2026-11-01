@@ -134,6 +134,67 @@ class DoublyLinkedList{
         
     }
 
+    public void display(){
+        Node temp = head;
+
+        while(temp != null){
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+        System.out.print("null");
+    }
+
+    public static void main(String args[]){
+        DoublyLinkedList dl = new DoublyLinkedList();
+            dl.addFront(3);
+            dl.addFront(5);
+            dl.addFront(7);
+            dl.addFront(11);
+            dl.addFront(13);
+            dl.addFront(17);
+            System.out.println("LinkedList Values");
+            dl.display();
+
+            dl.deletefront();
+            System.out.println();
+            System.out.println("LinkedList Values deleteFront");
+            dl.display();
+
+            dl.addback(5);
+            dl.addback(35);
+            dl.addback(33);
+            dl.addback(21);
+            dl.addback(77);
+            System.out.println();
+            System.out.println("LinkedList Values addBack");
+            dl.display();
+
+            dl.deleteBack();
+            System.out.println();
+            System.out.println("LinkedList Values deleteBack");
+            dl.display();
+
+            dl.addkeyAfter(17, 33);
+            System.out.println();
+            System.out.println("LinkedList Values addafter 33 to 17");
+            dl.display();
+
+            dl.addkeyBefore(17, 33);
+            System.out.println();
+            System.out.println("LinkedList Values addkeyBefore 33 to 17");
+            dl.display();
+
+            System.out.println();
+            System.out.println("search Node " + dl.search(5));
+
+            dl.removenode(17);
+            System.out.println();
+            System.out.println("LinkedList Values removenode  17");
+            dl.display();
+        
+
+    }
+
 
     
 }
