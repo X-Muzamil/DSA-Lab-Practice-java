@@ -2,6 +2,7 @@ class linkedList{
     class Node{
         Node next;
         int data;
+        
 
 
         Node(int data){
@@ -10,6 +11,7 @@ class linkedList{
         }      
     }
 
+    int size = 0;
     Node head;
     Node tail;
 
@@ -20,6 +22,7 @@ class linkedList{
             }else{
                 node.next = head;
                 head = node;
+                size++;
             }
     }
     
@@ -31,6 +34,7 @@ class linkedList{
         }
 
         head = head.next;
+        size--;
     }
 
     public void addback(int value){
@@ -40,6 +44,7 @@ class linkedList{
         }else{
             tail.next  = node;
             tail = node;
+            size++;
         }
     }
 
@@ -58,6 +63,7 @@ class linkedList{
         }
         current.next = null;
         tail = current;
+        size--;
     }
 
     int getbackitem(){
@@ -88,17 +94,17 @@ class linkedList{
             if(temp.next.data == value){
                 
                 temp.next = temp.next.next;
-            
-
+                size--;
             if (temp.next == null) {
                 tail = temp;
             
             }
-            return ;
             }
-
-            temp = temp.next;
+            else{
+                temp = temp.next;
+            }
         }
+        
     }
 
     public void addkeyBefore(int value,int target){
@@ -122,6 +128,7 @@ class linkedList{
                 current = current.next;
             }   
             System.out.println("The targeted value does not found");
+            size++;
     } 
 
     public void deleteBefore(int target){
@@ -139,13 +146,15 @@ class linkedList{
 
         Node current = head;
         while(current.next.next != null){
-            if(current.next.next.data != target){
+            if(current.next.next.data == target){
                 current.next = current.next.next;
+                size--;
                 return ;
             } 
             current = current.next;
         }
-        Sytstem.out.println("List does not found");
+        System.out.println("List does not found");
+        
     }
 
     public void addkeyAfter(int value, int target){
@@ -168,9 +177,33 @@ class linkedList{
                     }
                     current = current.next;
                 }
+                size++;
     }
 
-        public void display(){
+    int getSize(){
+        return size;
+    }
+
+    int getindex(int index){
+        Node current = head;
+        int count = 0;
+
+        if(index < 0 || index >= size){
+            System.out.println("Index is out of box!");
+            return -1;
+        }
+        while(current != null){
+            if(count == index){
+                System.out.println("The node on index - " + index + " - : " + current.data);
+            }
+            current = current.next;
+            count++;
+        }
+        
+        return -1;
+    }
+
+    public void display(){
             Node current = head;
 
             while(current != null){
@@ -178,51 +211,67 @@ class linkedList{
                 current = current.next;
             }
             System.out.print("null");
-        }
+    }
 
-        public static void main(String[] args){
+    public static void main(String[] args){
 
             linkedList ll = new linkedList();
-
-    // Add elements at front
-            ll.addFront(10);
-            ll.addFront(20);
-            ll.addFront(30);
-
+            ll.addFront(3);
+            ll.addFront(5);
+            ll.addFront(7);
+            ll.addFront(11);
+            ll.addFront(13);
+            ll.addFront(17);
+            System.out.println("LinkedList Values");
             ll.display();
-            System.out.println();
-
-    // Add elements at back
-            ll.addback(40);
-            ll.addback(50);
-
-            ll.display();
-            System.out.println();
-
-    // Search
-            System.out.println("Search 40: " + ll.search(40));
-            System.out.println();
-
-            System.out.println("Last item: " + ll.getbackitem());
-            System.out.println();
-
-            ll.addkeyBefore(25, 20);
-            System.out.println();
-
-            ll.addkeyAfter(35, 30);
-            System.out.println();
 
             ll.deletefront();
+            System.out.println();
+            System.out.println("LinkedList Values deleteFront");
+            ll.display();
+
+            ll.addback(5);
+            ll.addback(35);
+            ll.addback(33);
+            ll.addback(21);
+            ll.addback(77);
+            System.out.println();
+            System.out.println("LinkedList Values addBack");
+            ll.display();
 
             ll.deleteBack();
+            System.out.println();
+            System.out.println("LinkedList Values deleteBack");
+            ll.display();
 
-            ll.removenode(40);
+            ll.addkeyAfter(17, 33);
+            System.out.println();
+            System.out.println("LinkedList Values addafter 33 to 17");
+            ll.display();
 
+            ll.addkeyBefore(17, 33);
+            System.out.println();
+            System.out.println("LinkedList Values addkeyBefore 33 to 17");
+            ll.display();
+
+            ll.deleteBefore(17);
+            System.out.println();
+            System.out.println("LinkedList Values deletebefore 33 to 17");
+            ll.display();
+
+            ll.removenode(17);
+            System.out.println();
+            System.out.println("LinkedList Values removenode  17");
             ll.display();
             System.out.println();
-
-            ll.deleteBefore(10);
-            ll.display();
+            System.out.println("Total number of  linkedlist nodes : " + ll.getSize());
             System.out.println();
+            System.out.println(ll.getindex(5));
+
+            
+
+
+
+
     }
 }
